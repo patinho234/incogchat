@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat Anônimo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a2e;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    #username-screen,
+    #chat-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border: 1px solid #1f4068;
+      border-radius: 5px;
+      background-color: #1f4068;
+      color: #fff;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 100%;
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      padding: 10px;
+    }
+
+    #messages {
+      flex-grow: 1;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #162447;
+      border: 1px solid #1f4068;
+      max-height: 400px;
+    }
+
+    .chat-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-footer input {
+      width: calc(100% - 90px);
+    }
+
+    .chat-footer button {
+      width: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TELA DE LOGIN -->
+  <div id="username-screen">
+    <h2>Escolha seu nome de usuário</h2>
+    <input type="text" id="usernameInput" placeholder="Seu nome..." />
+    <button id="enterChat">Entrar no Chat</button>
+    <p id="usernameError" style="color: red;"></p>
+  </div>
+
+  <!-- TELA DO CHAT -->
+  <div id="chat-screen" style="display: none;">
+    <div class="chat-container">
+      <div id="messages"></div>
+      <div class="chat-footer">
+        <input type="text" id="inputMessage" placeholder="Digite sua mensagem..." />
+        <button id="sendButton">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
